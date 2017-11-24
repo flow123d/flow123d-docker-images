@@ -17,17 +17,23 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.schema-version="1.0"
 
 
-# COPY autoload.sh /etc/profile.d/autoload.sh
-# RUN /bin/echo -e "\nsource /etc/profile.d/autoload.sh" >> $HOME/.bashrc \
-#  && rm /bin/sh && ln -s /bin/bash /bin/sh \
-#  && apt-get update && apt-get install -y \
-#     sudo \
-#     make \
-#     wget  \
-#     python3 \
-#     bash-completion \
-#     apt-utils \
-#     nano \
-#     less \
-#     man \
-#  && rm -rf /var/lib/apt/lists/*
+# copy helper sh file
+COPY autoload.sh /etc/profile.d/autoload.sh
+
+# edit PATH variable and install various tools and libs
+# at the end remove apt files to make images smaller
+RUN /bin/echo -e "\nsource /etc/profile.d/autoload.sh" >> $HOME/.bashrc \
+ && rm /bin/sh && ln -s /bin/bash /bin/sh \
+ && apt-get update && apt-get install -y \
+    sudo \
+    make \
+    wget  \
+    python3 \
+    bash-completion \
+    apt-utils \
+    nano \
+    less \
+    man \
+    g++ \
+    gfortran \
+ && rm -rf /var/lib/apt/lists/*
