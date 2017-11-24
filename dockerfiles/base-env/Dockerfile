@@ -29,12 +29,41 @@ RUN /bin/echo -e "\nsource /etc/profile.d/autoload.sh" >> $HOME/.bashrc \
     make \
     wget  \
     python3 \
+    python3-dev \
+    python3-pip \
+    valgrind \
     bash-completion \
     apt-utils \
     nano \
     less \
     man \
     g++ \
+    gcc \
     gfortran \
+    git \
+    perl \
     cmake \
+    pandoc \
+    clang \
+    vim \
+    libboost-program-options-dev \
+    libboost-serialization-dev \
+    libboost-regex-dev \
+    libboost-filesystem-dev \
+    libblas* \
+    liblapack* \
+    lib32z1 \
+    lib32z1-dev \
+    libpugixml1v5 \
+    libpugixml-dev \
+    libpython3.4 \
+ && pip3 install \
+    pyyaml \
+    markdown \
+    psutil \
+    simplejson \
+    formic \
+    pymongo \
+    pandoc-fignos \
+    pandoc-tablenos \
  && rm -rf /var/lib/apt/lists/*
