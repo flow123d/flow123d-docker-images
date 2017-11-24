@@ -36,4 +36,5 @@ RUN /bin/echo -e "\nsource /etc/profile.d/autoload.sh" >> $HOME/.bashrc \
     man \
     g++ \
     gfortran \
+    cmake \
  && rm -rf /var/lib/apt/lists/*
