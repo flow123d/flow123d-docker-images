@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM flow123d/base
 MAINTAINER Jan Hybs
 ENV LANG C.UTF-8
 
@@ -6,6 +6,7 @@ ENV LANG C.UTF-8
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION=1.0
+ARG BUILD_TYPE=Debug
 
 LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.name="Flow123d" \
@@ -17,36 +18,25 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.version="$VERSION" \
       org.label-schema.schema-version="1.0"
 
-
 # copy helper sh file
 COPY autoload.sh /etc/profile.d/autoload.sh
 
 # edit PATH variable and install various tools and libs
 # at the end remove apt files to make images smaller
-RUN /bin/echo -e "\nsource /etc/profile.d/autoload.sh" >> $HOME/.bashrc \
- && rm /bin/sh && ln -s /bin/bash /bin/sh \
- && apt-get update && apt-get install -y \
-    sudo \
-    make \
-    wget  \
-    python3 \
+RUN apt-get update && apt-get install -y \
+    cmake \
+    git \
     python3-dev \
     python3-pip \
     valgrind \
-    bash-completion \
-    apt-utils \
-    nano \
-    less \
-    man \
-    g++ \
-    gcc \
-    gfortran \
-    git \
     perl \
-    cmake \
+    gfortran \
+    gcc \
+    g++ \
     pandoc \
     clang \
     vim \
+    ccache \
     libboost-program-options-dev \
     libboost-serialization-dev \
     libboost-regex-dev \
@@ -67,4 +57,23 @@ RUN /bin/echo -e "\nsource /etc/profile.d/autoload.sh" >> $HOME/.bashrc \
     pymongo \
     pandoc-fignos \
     pandoc-tablenos \
+ && apt-get install -y --no-install-recommends  \
+    doxygen \
+    graphviz \
+    texlive \
+    texlive-base \
+    texlive-binaries \
+    texlive-extra-utils \
+    texlive-font-utils \
+    texlive-fonts-extra \
+    texlive-fonts-recommended \
+    texlive-generic-recommended \
+    texlive-latex-base \
+    texlive-latex-extra \
+    texlive-latex-recommended \
+    texlive-pictures \
+    texlive-pstricks \
+    texlive-science \
+    imagemagick \
+    texlive-base \
  && rm -rf /var/lib/apt/lists/*

@@ -7,6 +7,7 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION=1.0
 ARG BUILD_TYPE=Debug
+
 LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.name="Flow123d" \
       org.label-schema.description="Transport Processes in Fractured Media" \
