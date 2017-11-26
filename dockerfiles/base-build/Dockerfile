@@ -18,9 +18,6 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.version="$VERSION" \
       org.label-schema.schema-version="1.0"
 
-# copy helper sh file
-COPY autoload.sh /etc/profile.d/autoload.sh
-
 # edit PATH variable and install various tools and libs
 # at the end remove apt files to make images smaller
 RUN apt-get update && apt-get install -y \
