@@ -25,8 +25,6 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.version="$VERSION" \
       org.label-schema.schema-version="1.0"
 
-
-# install yamlcpp, petsc, armadillo and bddcml
 # install yamlcpp, petsc, armadillo and bddcml
 RUN echo "Downloading and installing custom libraries" \
  && wget -qO /tmp/yamlcpp-${LIB_YAMLCPP}.deb "${LIB_URL}/yamlcpp_${LIB_YAMLCPP}_${BUILD_TYPE}/yamlcpp-${LIB_YAMLCPP}.deb" \
