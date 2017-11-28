@@ -1,4 +1,4 @@
-# Docker Images for project Flow123d
+# Docker images for the project Flow123d
 Repository containing Dockerfiles for the project [Flow123d](https://github.com/flow123d/flow123d)
 
 ## Images:
