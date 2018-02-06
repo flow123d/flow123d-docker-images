@@ -11,8 +11,8 @@ ARG BUILD_TYPE=Debug
 ARG LIB_MPICH=3.2.0
 ARG LIB_YAMLCPP=0.5.2
 ARG LIB_PETSC=3.8.3
-ARG LIB_ARMADILLO=3.4.3
-ARG LIB_BDDCML=2.4.0
+ARG LIB_ARMADILLO=8.3.4
+ARG LIB_BDDCML=2.5.0
 ARG LIB_URL=http://ciflow.nti.tul.cz/static/packages
 
 LABEL org.label-schema.build-date="$BUILD_DATE" \
