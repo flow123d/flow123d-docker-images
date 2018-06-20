@@ -73,4 +73,5 @@ RUN apt-get update && apt-get install -y \
     texlive-science \
     imagemagick \
     texlive-base \
+    lmodern \
  && rm -rf /var/lib/apt/lists/*
