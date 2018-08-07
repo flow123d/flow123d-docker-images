@@ -54,6 +54,7 @@ RUN apt-get update && apt-get install -y \
     pymongo \
     pandoc-fignos \
     pandoc-tablenos \
+    cpp-coveralls \
  && apt-get install -y --no-install-recommends  \
     doxygen \
     graphviz \
