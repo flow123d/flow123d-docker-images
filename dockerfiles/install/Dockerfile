@@ -36,3 +36,5 @@ RUN apt-get update && apt-get install -y \
     pymongo \
  && rm -rf /var/lib/apt/lists/*
  
+# save the image version
+RUN echo "dev-dbg" > /.dockerversion

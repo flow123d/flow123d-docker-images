@@ -16,16 +16,9 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.vcs-url="https://github.com/flow123d/flow123d" \
       org.label-schema.vendor="Technical University of Liberec" \
       org.label-schema.version="$VERSION" \
-      org.label-schema.schema-version="1.0"
+org.label-schema.schema-version="1.0"
 
-# copy helper sh file
-COPY autoload.sh /etc/profile.d/autoload.sh
-
-# edit PATH variable and install various tools and libs
-# at the end remove apt files to make images smaller
-RUN /bin/echo -e "\nsource /etc/profile.d/autoload.sh" >> $HOME/.bashrc \
- && rm /bin/sh && ln -s /bin/bash /bin/sh \
- && apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     sudo \
     make \
     wget  \
@@ -35,7 +28,13 @@ RUN /bin/echo -e "\nsource /etc/profile.d/autoload.sh" >> $HOME/.bashrc \
     nano \
     less \
     man \
- && rm -rf /var/lib/apt/lists/*
+    ca-certificates \
+    curl \
+    gosu \
+&& rm -rf /var/lib/apt/lists/*
+
+# copy entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # install mpich
 RUN wget -qO /tmp/mpich-3.2.0.deb "http://ciflow.nti.tul.cz/static/packages/mpich_3.2.0_$BUILD_TYPE/mpich-3.2.0.deb" \
@@ -48,3 +47,13 @@ ENV MPICH_DIR="/usr/local/mpich-3.2.0" \
     LIBRARY_PATH="/usr/local/mpich-3.2.0/lib:$LIBRARY_PATH" \
     LD_LIBRARY_PATH="/usr/local/mpich-3.2.0/lib:$LD_LIBRARY_PATH" \
     MANPATH="/usr/local/mpich-3.2.0/share/man:$MANPATH"
+
+
+# save the image version
+RUN echo "base" > /.dockerversion
+
+# set entrypoint script
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+# and default argument
+CMD ["/bin/bash"]
+

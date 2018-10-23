@@ -39,3 +39,6 @@ ENV PETSC_DIR="/usr/lib/petsc/" \
     BDDCML_ROOT="/usr/lib/bddcml_blopex/bddcml/Release" \
     Armadillo_ROOT_HINT="/usr/lib/armadillo/Release" \
     YamlCpp_ROOT_HINT="/usr/lib/yamlcpp/Release"
+    
+# save the image version
+RUN echo "dev-dbg" > /.dockerversion

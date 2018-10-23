@@ -18,7 +18,7 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.version="$VERSION" \
       org.label-schema.schema-version="1.0"
 
-# edit PATH variable and install various tools and libs
+# install various tools and libs
 # at the end remove apt files to make images smaller
 RUN apt-get update && apt-get install -y \
     cmake \
@@ -34,6 +34,9 @@ RUN apt-get update && apt-get install -y \
     clang \
     vim \
     ccache \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
     libboost-program-options-dev \
     libboost-serialization-dev \
     libboost-regex-dev \
@@ -76,3 +79,6 @@ RUN apt-get update && apt-get install -y \
     texlive-base \
     lmodern \
  && rm -rf /var/lib/apt/lists/*
+ 
+# save the image version
+RUN echo "base-build" > /.dockerversion
