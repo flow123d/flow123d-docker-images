@@ -41,4 +41,4 @@ ENV PETSC_DIR="/usr/lib/petsc/" \
     YamlCpp_ROOT_HINT="/usr/lib/yamlcpp/Debug"
 
 # save the image version
-RUN echo "dev-dbg" > /.dockerversion
+RUN echo "dev-dbg:2.2.0" > /.dockerversion

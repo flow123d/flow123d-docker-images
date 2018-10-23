@@ -41,4 +41,4 @@ ENV PETSC_DIR="/usr/lib/petsc/" \
     YamlCpp_ROOT_HINT="/usr/lib/yamlcpp/Release"
     
 # save the image version
-RUN echo "dev-rel" > /.dockerversion
+RUN echo "dev-rel:2.2.0" > /.dockerversion
