@@ -50,6 +50,7 @@ RUN apt-get update && apt-get install -y \
     libpython3.4 \
  && pip3 install \
     pyyaml \
+    loguru \
     markdown \
     psutil \
     simplejson \

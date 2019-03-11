@@ -17,10 +17,12 @@ LABEL org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.version="$VERSION" \
       org.label-schema.schema-version="1.0"
 
+# install Flow123d and GeoMop packages
 RUN apt-get update && apt-get install -y \
     perl \
     python3-pip \
     python3-dev \
+    python3-paramiko \
     libgfortran3 \
     libblas3 \
     liblapack3 \
@@ -30,11 +32,15 @@ RUN apt-get update && apt-get install -y \
  && sudo pip3 install \
     pyyaml \
     markdown \
+    six==1.10.0 \
+    numpy==1.12.0 \
+    scipy==0.18.1 \
     psutil \
+    pydes \
     simplejson \
     formic \
     pymongo \
- && rm -rf /var/lib/apt/lists/*
- 
+&& rm -rf /var/lib/apt/lists/*
+
 # save the image version
-RUN echo "dev-dbg" > /.dockerversion
+RUN echo "install" > /.dockerversion
