@@ -48,6 +48,7 @@ RUN apt-get update && apt-get install -y \
     libpugixml1v5 \
     libpugixml-dev \
     libpython3.4 \
+    oprofile \
  && pip3 install \
     pyyaml \
     loguru \
